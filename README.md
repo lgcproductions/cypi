@@ -1,2 +1,2 @@
 # cypi
-A raspberry based cybot
+# A Raspbery Pi 2 based cybot. 
