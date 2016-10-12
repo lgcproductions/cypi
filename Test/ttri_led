@@ -1,0 +1,42 @@
+from gpiozero import RGBLED
+from time import sleep
+
+led = RGBLED(red=4, green=13, blue=27)
+
+led.blink(2, 3, 1, 2, (1, 0 , 0), (0, 0, 0), 2)
+sleep(3)
+led.off()
+led.blink(2, 1, 1, 1, (0, 1 , 0), (0, 0, 0), 2)
+sleep(3)
+led.off()
+led.blink(2, 1, 1, 1, (0, 0 , 1), (0, 0, 0), 2)
+sleep(3)
+led.off()
+led.red = 1  # full red
+sleep(2.5)
+led.red = 0
+led.red = 0.5  # half red
+sleep(2.5)
+led.red = 0
+led.blue = 1 # full blue
+sleep(2.5)
+led.blue = 0
+led.blue = 0.5
+sleep(2.5)
+led.blue = 0
+led.green = 1  # full green
+sleep(2.5)
+led.green = 0
+led.green = 0.5
+sleep(2.5)
+led.green = 0
+led.color = (1, 0, 1)  # magenta
+sleep(2.5)
+led.color = (1, 1, 0)  # yellow
+sleep(2.5)
+led.color = (0, 1, 1)  # cyan
+sleep(2.5)
+led.color = (1, 1, 1)  # white
+sleep(2.5)
+led.color = (0, 0, 0)  # off
+sleep(2)
