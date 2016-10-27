@@ -1,4 +1,4 @@
-# Code to control cypi. A big thanks to every one's help and there code
+# Code to control cypi. A big thanks to every one's help and their code
 # to make this possible.
 #
 #
@@ -17,6 +17,72 @@ triGREEN = LED(13)
 
 
 button_delay = 0.1
+action_time = 0.2
+
+# Function Definitions
+
+def closeConnection():
+  print '\nClosing connection...'
+  wii.rumble = 1
+  time.sleep(1)
+  wii.rumble = 0
+  exit(wii)
+
+def moveForwards():
+  time.sleep(button_delay)    
+  motorl.forward(1)
+  motorr.forward(1)
+  time.sleep(action_time)
+  motorl.stop()
+  motorr.stop()
+
+def moveBackwards():
+  time.sleep(button_delay)  
+  motorl.backward(1)
+  motorr.backward(1)
+  time.sleep(action_time)
+  motorl.stop()
+  motorr.stop() 
+
+def turnLeft():
+  time.sleep(button_delay)    
+  motorr.forward(1)
+  time.sleep(action_time)
+  motorr.stop()
+
+def turnRight():
+  time.sleep(button_delay)    
+  motorl.forward(1)
+  time.sleep(action_time)
+  motorl.stop()
+
+
+def turnOnRedLed():
+  time.sleep(button_delay)
+  triRED.on()
+
+def turnOnBlueLed():
+  time.sleep(button_delay)
+  triBLUE.on()
+
+def turnOnGreenLed():
+  time.sleep(button_delay)
+  triGREEN.on()
+
+def tunOnAllLeds():
+  time.sleep(button_delay)
+  triRED.on()
+  triBLUE.on()
+  triGREEN.on()
+
+def turnOffAllLeds():
+  triRED.off()
+  triBLUE.off()
+  triGREEN.off()
+
+# Function Definitions End
+
+
 
 print 'Press 1 + 2 on your Wii Remote now ...'
 
@@ -33,78 +99,34 @@ wii.rpt_mode = cwiid.RPT_BTN
  
 while True:
   buttons = wii.state['buttons']
-  if (buttons & cwiid.BTN_UP):
-    #Forwards
-    time.sleep(button_delay)    
-    motorl.forward(1)
-    motorr.forward(1)
-    time.sleep(0.2)
-    motorl.stop()
-    motorr.stop()
-
-  elif (buttons & cwiid.BTN_DOWN):
-    time.sleep(button_delay)  
-    motorl.backward(1)
-    motorr.backward(1)
-    time.sleep(0.2)
-    motorl.stop()
-    motorr.stop()
-
-  
-  elif (buttons & cwiid.BTN_LEFT):
-    time.sleep(button_delay)         
-    motorr.forward(1)
-    time.sleep(0.2)
-    motorr.stop()
-
-   
-  elif(buttons & cwiid.BTN_RIGHT):
-    time.sleep(button_delay)          
-    motorl.forward(1)
-    time.sleep(0.2)
-    motorl.stop()
-    
-  elif (buttons & cwiid.BTN_A):
-	time.sleep(button_delay)
-	triRED.on()
-		
-  elif (buttons & cwiid.BTN_2):
-	time.sleep(button_delay)
-	triBLUE.on()
-		
-  elif (buttons & cwiid.BTN_1):
-	time.sleep(button_delay)
-	triGREEN.on()
-		
-  elif (buttons & cwiid.BTN_B):
-	time.sleep(button_delay)
-	triRED.on()
-	triBLUE.on()
-	triGREEN.on()
-  
-  else:
-    triRED.off()
-	triBLUE.off()
-	triGREEN.off()
-   
-
-    
-#press button A to stop all motors
-  if (buttons & cwiid.BTN_A - cwiid.BTN_B):
-    time.sleep(button_delay)          
-     
 
   if (buttons - cwiid.BTN_PLUS - cwiid.BTN_MINUS == 0):
-    print '\nClosing connection ...'
-    # NOTE: This is how you RUMBLE the Wiimote
-    wii.rumble = 1
-    time.sleep(1)
-    wii.rumble = 0
-    exit(wii)
+    closeConnection()
 
+  elif (buttons & cwiid.BTN_UP):
+    moveForwards()
 
+  elif (buttons & cwiid.BTN_DOWN):
+    moveBackwards()
+  
+  elif (buttons & cwiid.BTN_LEFT):
+    turnLeft()
+   
+  elif(buttons & cwiid.BTN_RIGHT):
+    turnRight()
+    
+  elif (buttons & cwiid.BTN_A):
+    turnOnRedLed()
+		
+  elif (buttons & cwiid.BTN_2):
+		turnOnBlueLed()
 
-
-
-
+  elif (buttons & cwiid.BTN_1):
+    turnOnGreenLed()
+		
+  elif (buttons & cwiid.BTN_B):
+    turnOnAllLeds()
+  
+  else:
+    turnOffAllLeds()
 
