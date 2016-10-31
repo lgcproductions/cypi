@@ -6,27 +6,3 @@ Cypi is a Raspbery Pi infused robot (Cybot). The robot, Cybot came from a 90's m
 Cypi is intended as a project for me to learn a whole host of new skils. From programming, electronics, sensors, and even using github and much more. Please take into consideration that there may be erros within the code and this tutorial.
 
 There may be a better way of doing certain items in the code. Please do leave a comment. Thank you
-
-README.md
-
-LISCENCE
-
-Test (Folder) - contain's scripts to test all the parts of cypi. making sure all connections etc are correct. 
-
-full_test.py
-
-screen_test.py
-
-tbuzzer.py
-
-tldr.py
-
-tmotor.py
-
-tsoar.py
-
-ttri_led.py
-
-core(Folder)
-
-
