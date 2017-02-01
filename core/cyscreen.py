@@ -60,6 +60,8 @@ def screenWiierror():
 	disp.display() 
 
 def screenWiiconnect():
+	screenLogo()
+	time.sleep(2)
 	print 'Press 1 + 2 on your Wii Remote now....'
 	screenClear()
 	draw.text((2,2), 'Press 1 + 2', font=font)
