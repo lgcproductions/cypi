@@ -60,6 +60,7 @@ def screenWiierror():
 	disp.display() 
 
 def screenWiiconnect():
+	print 'Press 1 + 2 on your Wii Remote now....'
 	screenClear()
 	draw.text((2,2), 'Press 1 + 2', font=font)
 	disp.image(image)
@@ -67,6 +68,7 @@ def screenWiiconnect():
 
 def screenConnected():
 	screenClear()
+	print 'Wii Remote connected...\n'
 	draw.text((2,2), 'Connected', font=font)
 	disp.image(image)
 	disp.display()
